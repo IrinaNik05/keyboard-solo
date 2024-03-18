@@ -65,21 +65,21 @@ document.addEventListener('keydown', function(event) {
             counterWrong++;
             wrongWord.textContent = counterWrong;
         }
-    }
+    };
+
+    function showMessage(text) {
+        clearInterval(interval);
+        word.style.display = 'none';
+        message.classList.remove("hidden");
+        message.textContent = `${text}`;
+    };
 
     if (i >= randomWord.length) {
         if (counterRight === 5) {
-            clearInterval(interval);
-            word.style.display = 'none';
-            message.classList.remove("hidden");
-            message.textContent = `Вы победили! Ваше время: ${timer.textContent}.`;
+            showMessage(`Вы победили! Ваше время: ${timer.textContent}.`);
         } else if (counterWrong === 5) {
-            clearInterval(interval);
-            word.style.display = 'none';
-            message.classList.remove("hidden");
-            message.textContent = `Вы проиграли!`;
+            showMessage("Вы проиграли!");
         }
         addWordByLetter();
-    }
-
+    };
 });
